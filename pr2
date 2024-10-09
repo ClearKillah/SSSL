@@ -1,0 +1,114 @@
+Я понимаю вашу просьбу. Давайте немного изменим структуру и содержание отчета, сохраняя при этом его основную суть. Вот переработанный вариант:
+
+Практическое задание №2: Анализ журналов событий
+Выполнил: Сидоров Алексей Петрович, группа ББИО-03-23
+
+1. Получение данных для анализа
+
+Для начала работы мы загрузим репозиторий с журналами событий:
+
+```python
+import os
+
+if not os.path.exists("./logdata/"):
+    !git clone https://github.com/logpai/loghub ./logdata
+```
+
+2. Определение шаблона для разбора логов
+
+Пример записи из журнала событий:
+```
+20171223-22:15:29:633|Step_StandReportReceiver|30002312|onReceive action: android.intent.action.SCREEN_ON
+```
+
+Структура записи:
+- Дата и время
+- Компонент
+- Идентификатор процесса
+- Содержание сообщения
+
+Создадим регулярное выражение для извлечения этих данных:
+
+```python
+import re
+
+log_pattern = re.compile(r'(\d{8}-\d{2}:\d{2}:\d{2}:\d{3})\|([^|]+)\|(\d+)\|(.*)')
+```
+
+3. Подготовка базы данных
+
+Создадим базу данных SQLite для хранения обработанных записей:
+
+```python
+import sqlite3
+
+db_dir = './database/'
+os.makedirs(db_dir, exist_ok=True)
+db_path = os.path.join(db_dir, 'log_analysis.db')
+
+conn = sqlite3.connect(db_path)
+cur = conn.cursor()
+
+cur.execute("""
+CREATE TABLE IF NOT EXISTS log_entries (
+    id INTEGER PRIMARY KEY,
+    timestamp TEXT,
+    component TEXT,
+    pid INTEGER,
+    message TEXT
+)
+""")
+conn.commit()
+```
+
+4. Обработка и сохранение данных
+
+Теперь обработаем журнал событий и сохраним данные в базу:
+
+```python
+with open('./logdata/HealthApp/HealthApp_2k.log', 'r') as log_file:
+    for line in log_file:
+        match = log_pattern.match(line)
+        if match:
+            cur.execute("""
+            INSERT INTO log_entries (timestamp, component, pid, message)
+            VALUES (?, ?, ?, ?)
+            """, match.groups())
+
+conn.commit()
+```
+
+5. Анализ данных
+
+Извлечем данные из базы для анализа:
+
+```python
+import pandas as pd
+
+df = pd.read_sql_query("SELECT * FROM log_entries", conn)
+print(df.head())
+
+component_counts = df['component'].value_counts()
+print("\nРаспределение компонентов:")
+print(component_counts)
+```
+
+6. Визуализация результатов
+
+Создадим график распределения компонентов:
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12, 6))
+component_counts.plot(kind='bar')
+plt.title('Распределение компонентов в журнале событий')
+plt.xlabel('Компонент')
+plt.ylabel('Количество записей')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+```
+
+Заключение:
+В ходе выполнения задания мы разработали систему для анализа журналов событий. Мы загрузили данные, создали базу данных для их хранения, обработали записи и провели базовый анализ распределения компонентов. Эта информация может быть полезна для понимания активности различных частей системы и выявления потенциальных проблем или аномалий.
