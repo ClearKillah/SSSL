@@ -1,4 +1,4 @@
-Практическое задание №3. Сбор логов
+Практическое задание №1.
 rsyslog
 Установка rsyslog на сервер
 ![изображение](https://github.com/ClearKillah/toib-prz3/assets/64082447/4477a97e-d448-48e9-a8d2-9ac7aa481f2f)
