@@ -17,7 +17,7 @@
 ![image](https://github.com/user-attachments/assets/49027829-83c9-4f67-ac35-fe4853ca1c87)
 
 Устанавливаем и настраиваем получение логов на сервере с использованием Loki:
-![image](https://github.com/user-attachments/assets/23985786-8145-44fc-9f8a-8618eb011df6)
+![image](https://github.com/user-attachments/assets/f69b1c20-0ce5-44f9-b262-066a970fff01)
 ![image](https://github.com/user-attachments/assets/be1c21b2-71de-4781-8d9c-05412fc57685)
 
 Запускаем Loki:
