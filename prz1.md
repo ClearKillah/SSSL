@@ -27,4 +27,4 @@
 
 ![image](https://github.com/user-attachments/assets/f6f4a036-ff2a-43fe-9cc7-9d04bca3b8d4)
 ![image](https://github.com/user-attachments/assets/0c58b065-af75-4292-bdf1-685c13fe8b09)
-![image](https://github.com/user-attachments/assets/bbb94a18-3707-43b2-a5a0-cc9a9f81c47a)
+![telegram-cloud-photo-size-2-5273860943887065776-y](https://github.com/user-attachments/assets/b8f0a299-d090-4c57-8791-6c7057a47549)
