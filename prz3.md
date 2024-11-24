@@ -22,3 +22,10 @@ curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-in
 ![image](https://github.com/user-attachments/assets/a5e29b6f-a6cc-4049-b21a-855b2096a1bf)
 Запуск команды
 ![image](https://github.com/user-attachments/assets/6b5dec49-ff1c-4532-a37b-b427a6d9befb)
+В итоге делаем с клиентом на вбоксе
+![image](https://github.com/user-attachments/assets/337e8e30-3ec1-4b80-8a46-6c344a7e1f7d)
+![image](https://github.com/user-attachments/assets/d95b4d36-cd71-4b7d-946d-8cc7c3b4c20e)
+проверка целности файлов
+![image](https://github.com/user-attachments/assets/636288d1-750c-4df7-85b6-03863c9c63da)
+проведем udp атаку на сервер 
+![image](https://github.com/user-attachments/assets/66b7ee4d-593d-4f4f-b487-25ade7160e6c)
